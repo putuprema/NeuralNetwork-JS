@@ -107,7 +107,7 @@ export default class Matrix {
     return result;
   }
 
-  map(func) { // apply a function to every element of the matrix
+  apply(func) { // apply a function to every element of the matrix
     for (let i = 0; i < this.rows; i += 1) {
       for (let j = 0; j < this.columns; j += 1) {
         this.matrix[i][j] = func(this.matrix[i][j]);

@@ -26,11 +26,11 @@ export default class NeuralNetwork {
 
     let hidden = Matrix.multiply(this.weights_ih, input);
     hidden.add(this.hiddenBias);
-    hidden.map(sigmoid); // apply activation function to the hidden layer
+    hidden.apply(sigmoid); // apply activation function to the hidden layer
 
     let output = Matrix.multiply(this.weights_ho, hidden);
     output.add(this.outputBias);
-    output.map(sigmoid); // apply activation function to the output layer
+    output.apply(sigmoid); // apply activation function to the output layer
 
     return output.toArray(); // send the result back to user
   }
