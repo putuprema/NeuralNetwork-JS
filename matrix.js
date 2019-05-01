@@ -111,11 +111,11 @@ export default class Matrix {
     }
   }
 
-  transpose() {
-    const result = new Matrix(this.columns, this.rows);
-    for (let i = 0; i < this.rows; i += 1) {
-      for (let j = 0; j < this.columns; j += 1) {
-        result.matrix[j][i] = this.matrix[i][j];
+  static transpose(m1) {
+    const result = new Matrix(m1.columns, m1.rows);
+    for (let i = 0; i < m1.rows; i += 1) {
+      for (let j = 0; j < m1.columns; j += 1) {
+        result.matrix[j][i] = m1.matrix[i][j];
       }
     }
     return result;
