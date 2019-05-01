@@ -55,6 +55,20 @@ export default class Matrix {
     }
   }
 
+  static subtract(m1, m2) { // Static function for two matrices subtraction
+    if (m1.rows !== m2.rows || m1.columns !== m2.columns) {
+      // console.log("Both matrix must have the same number of rows and columns!");
+      return undefined;
+    }
+    const result = new Matrix(m1.rows, m1.columns);
+    for (let i = 0; i < result.rows; i += 1) {
+      for (let j = 0; j < result.columns; j += 1) {
+        result.matrix[i][j] = m1.matrix[i][j] - m2.matrix[i][j];
+      }
+    }
+    return result;
+  }
+
   subtract(n) {
     if (n instanceof Matrix) { // IF n is a matrix then do matrix subtract
       for (let i = 0; i < this.rows; i += 1) {
