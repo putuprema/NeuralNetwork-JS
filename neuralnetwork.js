@@ -34,4 +34,23 @@ export default class NeuralNetwork {
 
     return output.toArray(); // send the result back to user
   }
+
+  train(inputs, targets) {
+    let outputs = this.feedForward(inputs);
+    outputs = Matrix.fromArray(outputs);
+    targets = Matrix.fromArray(targets);
+    let outputErrors = Matrix.subtract(targets, outputs);
+    let hiddenErrors = Matrix.multiply(Matrix.transpose(this.weights_ho), outputErrors);
+    /*
+    * Formula for calculating hidden errors (assume 2 hidden nodes and 2 output nodes)
+    * hiddenErrors     = weights between hidden & output (transposed) * outputErrors
+    * | hiddenError1 | =                                 | w11  w21 | * | outputError1 |
+    * | hiddenError2 |                                   | w12  w22 |   | outputError2 |
+    */
+    console.table(outputs.matrix);
+    console.table(targets.matrix);
+    console.table(outputErrors.matrix);
+    console.table(this.weights_ho.matrix);
+    console.table(hiddenErrors.matrix);
+  }
 }
